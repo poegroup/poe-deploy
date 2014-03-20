@@ -22,7 +22,7 @@ $ startup start -p app.js
 Environment Variables
 ---------------------
 
-`GITHUB_TOKEN` - GitHub access token for cloning the repo
-`GITHUB_SECRET` - A secret token shared between GitHub and the `poe-deploy` instance to verify webhooks
-`HEROKU_TOKEN` - Heroku access token for deploying and creating a apps
-`HEROKU_PREFIX` - A prefix to use when deploying to heroku, i.e. `poe` would result in `poe-myapp-prod`
+* `GITHUB_TOKEN` - GitHub access token for cloning the repo
+* `GITHUB_SECRET` - A secret token shared between GitHub and the `poe-deploy` instance to verify webhooks
+* `HEROKU_TOKEN` - Heroku access token for deploying and creating a apps
+* `HEROKU_PREFIX` - A prefix to use when deploying to heroku, i.e. `poe` would result in `poe-myapp-prod`
