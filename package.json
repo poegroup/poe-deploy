@@ -1,6 +1,6 @@
 {
   "name": "poe-deploy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple deploy application with GitHub and Heroku integration",
   "main": "index.js",
   "scripts": {
@@ -22,9 +22,10 @@
   },
   "homepage": "https://github.com/poegroup/poe-deploy",
   "dependencies": {
+    "envs": "^0.1.4",
     "grappler": "~0.1.0",
-    "grappler-hook-github": "~0.1.0",
     "grappler-deploy-heroku": "~0.1.0",
+    "grappler-hook-github": "~0.1.0",
     "grappler-logger-stdout": "~0.1.0"
   }
 }
