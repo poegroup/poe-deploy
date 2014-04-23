@@ -26,7 +26,12 @@ module.exports = function(opts) {
 
   app.plugin(heroku({
     prefix: envs('HEROKU_PREFIX', opts.heroku.prefix),
-    token: envs('HEROKU_TOKEN', opts.heroku.token)
+    token: envs('HEROKU_TOKEN', opts.heroku.token),
+    env: {
+      GITHUB_USERNAME: envs('GITHUB_SECRET', opts.github.secret),
+      GITHUB_PASSWORD: 'x-oauth-basic',
+      GITHUB_AUTH_TOKEN: envs('GITHUB_SECRET', opts.github.secret)
+    }
   }));
 
   app.plugin(stdout());
