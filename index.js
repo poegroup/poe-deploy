@@ -19,18 +19,20 @@ module.exports = function(opts) {
 
   var app = grappler();
 
+  var GITHUB_TOKEN = envs('GITHUB_TOKEN', opts.github.token);
+
   app.plugin(github({
     secret: envs('GITHUB_SECRET', opts.github.secret),
-    token: envs('GITHUB_TOKEN', opts.github.token)
+    token: GITHUB_TOKEN
   }));
 
   app.plugin(heroku({
     prefix: envs('HEROKU_PREFIX', opts.heroku.prefix),
     token: envs('HEROKU_TOKEN', opts.heroku.token),
     env: {
-      GITHUB_USERNAME: envs('GITHUB_SECRET', opts.github.secret),
+      GITHUB_USERNAME: GITHUB_TOKEN,
       GITHUB_PASSWORD: 'x-oauth-basic',
-      GITHUB_AUTH_TOKEN: envs('GITHUB_SECRET', opts.github.secret)
+      GITHUB_AUTH_TOKEN: GITHUB_TOKEN
     }
   }));
 
