@@ -8,6 +8,7 @@ var github = require('grappler-hook-github');
 var heroku = require('grappler-deploy-heroku');
 var stdout = require('grappler-logger-stdout');
 var config = require('grappler-task-config');
+var router = require('./router');
 
 /**
  * Create a poe-deploy app
@@ -21,6 +22,7 @@ module.exports = function(opts) {
   var app = grappler();
 
   var GITHUB_TOKEN = envs('GITHUB_TOKEN', opts.github.token);
+  var HEROKU_TOKEN = envs('HEROKU_TOKEN', opts.heroku.token);
 
   app.on('task', function(task) {
     task.use(config({
@@ -35,7 +37,7 @@ module.exports = function(opts) {
 
   app.plugin(heroku({
     prefix: envs('HEROKU_PREFIX', opts.heroku.prefix),
-    token: envs('HEROKU_TOKEN', opts.heroku.token),
+    token: HEROKU_TOKEN,
     env: {
       GITHUB_USERNAME: GITHUB_TOKEN,
       GITHUB_PASSWORD: 'x-oauth-basic',
@@ -44,6 +46,10 @@ module.exports = function(opts) {
   }));
 
   app.plugin(stdout());
+  app.plugin(router({
+    token: HEROKU_TOKEN,
+    router: envs('ROUTER', opts.router)
+  }));
 
   return app;
 };
