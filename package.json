@@ -26,6 +26,7 @@
     "grappler": "~0.1.0",
     "grappler-deploy-heroku": "~0.1.2",
     "grappler-hook-github": "~0.1.1",
-    "grappler-logger-stdout": "~0.1.1"
+    "grappler-logger-stdout": "~0.1.1",
+    "grappler-task-config": "~0.1.0"
   }
 }
